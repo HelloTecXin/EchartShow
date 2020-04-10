@@ -17,6 +17,7 @@ body{
     background: url(../images/bg.jpg)
     no-repeat top center;
     line-height: 1.15;
+    background-size: cover;
 }
 header{
     height:1.25rem;
@@ -41,7 +42,7 @@ header{
 // 页面主体盒子
 .mainbox{
     display: flex;
-    min-width: 1024px;
+    min-width: 1080px;
     max-width: 1920px;
     margin: 0 auto;
    padding: .125rem .125rem 0;
@@ -54,8 +55,8 @@ header{
     }
     .panel{
         position: relative;
-       height: 3.875rem;
-       background-color: pink; 
+       height: 3.675rem;
+    //    background-color: pink; 
        border: 1px solid rgba(25, 186, 139, 0.17);
        background: url(../images/line\(1\).png) rgba(255, 255, 255, 0.04);
        margin-bottom: .1875rem;
@@ -115,8 +116,8 @@ header{
             font-weight: 400;
         }
         .chart{
-            height: 3rem;
-            background-color: pink;
+            height: 3.256rem;
+            // background-color: pink;
         }
     }
 }
@@ -198,4 +199,57 @@ header{
         background-size: 100% 100%;
         opacity: 0.3;
     }
+    .map2{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8.0375rem;
+        height: 8.0375rem;
+        background: url(../images/lbx.png);
+        background-size: 100% 100%;
+        animation: rotate1 15s linear infinite;
+        opacity: 0.6;
+    }
+    .map3{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 7.075rem;
+        height: 7.075rem;
+        background: url(../images/jt.png);
+        background-size: 100% 100%;
+        animation: rotate2 100s linear infinite;
+        opacity: 0.6;
+    }
+    .chart{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10.125rem;
+
+    }
+    @keyframes rotate1 {
+        form{
+            transform: translate(-50%, -50%)
+            rotate(0deg);
+        }
+        to{
+            transform: translate(-50%, -50%)
+            rotate(360deg);
+        }
+    }
+    @keyframes rotate2 {
+        form{
+            transform: translate(-50%, -50%)
+            rotate(0deg);
+        }
+        to{
+            transform: translate(-50%, -50%)
+            rotate(-360deg);
+        }
+    }
+
 }
