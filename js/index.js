@@ -85,6 +85,8 @@
 (function () {
     // 实例化对象
     var myChart = echarts.init(document.querySelector(".bar2 .chart"));
+    // 声明颜色数组
+    var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
     // 指定配置和数据
     var option = {
         grid: {
@@ -96,31 +98,62 @@
         xAxis: {
            show:false
         },
-        yAxis: {
-            type: 'category',
-            data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)'],
-            //不显示y轴线条
-            axisLine: {
-                show: false
-                    },
-            // 不显示刻度
-            axisTick: {
-                show: false
+        yAxis: [
+            {
+                type: 'category',
+                data: ["HTML5", "CSS3", "javascript", "VUE", "NODE"],
+                // 是否是反向坐标
+                inverse:true,
+                //不显示y轴线条
+                axisLine: {
+                    show: false
+                        },
+                // 不显示刻度
+                axisTick: {
+                    show: false
+                },
+                // 刻度标签的文字设置为白色
+                axisLabel: {
+                    color: "#fff"
+             },
             },
-            // 刻度标签的文字设置为白色
-            axisLabel: {
-                color: "#fff"
-         },
-        },
+            {
+                show: true,
+                data: [702, 350, 610, 793, 664],
+                inverse:true, 
+                // 不显示y轴的线
+                axisLine: {
+                    show: false
+                },
+                // 不显示刻度
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                textStyle: {
+                    fontSize: 12,
+                    color: "#fff"
+                }
+                }
+            }
+        ],
         series: [
             {
                 
                 name: '条',
                 type: 'bar',
-                data: [18203, 23489, 29034, 104970, 131744, 630230],
+                // 使用y轴的index，在单个图表实例中存在多个y轴的时候有用
+                yAxisIndex:0,
+                data: [70, 34, 60, 78, 69],
                 // 修改第一组柱子的圆角
                 itemStyle:{
-                    barBorderRadius:20
+                    barBorderRadius:20,
+                    // 此时的color，可以修改柱子的颜色
+                    color:function (params) {
+                        // params 是当前柱子对象 dataIndex是柱子的索引号
+                        // console.log(params);
+                        return myColor[params.dataIndex]
+                    }
                 },
                 // 柱子之间的距离
                 barCategoryGap: 50,
@@ -132,12 +165,21 @@
                     position:'inside',
                     // {c} 会自动的解析为 数据 data里面的数据
                     formatter:"{c}%"
-                }
+                },
             },
             {
-                name: '2012年',
+                name: '框',
                 type: 'bar',
-                data: [19325, 23438, 31000, 121594, 134141, 681807]
+                yAxisIndex:1,
+                barCategoryGap: 50,
+                barWidth: 15,
+                itemStyle:{
+                    color: "none",
+                    borderColor: "#00c1de",
+                    borderWidth: 3,
+                    barBorderRadius: 15
+                },
+                data: [100, 100, 100, 100, 100]
             }
         ]
     };
